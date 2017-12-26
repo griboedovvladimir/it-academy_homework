@@ -11,7 +11,7 @@
                     let counter = 0;
                     for (let m = 0; m < args.length; m++) {
                         if (args[t] === args[m]) {
-                            counter++
+                            counter++;
                         }
                     }
                     arr.push(args[t] + ' - ' + counter);
