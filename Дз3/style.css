@@ -46,3 +46,12 @@ table {
     border-spacing: 0;
 }
 
+/*//////////////////////////////////////////*/
+
+div, button {
+    color:white;
+}
+
+div, button {
+    background-color: black;
+}
