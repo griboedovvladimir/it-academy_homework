@@ -22,36 +22,97 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
 /*//////////////////////////////////////////*/
-
-div, button {
-    color:white;
+#align{
+width: 300px;
+    margin: 20px auto;
+}
+div, button, li {
+    font-family: sans-serif;
 }
 
+.X {
+    font-family: 'Orbitron', sans-serif;
+}
+
+#takeTag {
+    display: block;
+    margin: 5px 0 0 0;
+    height: 30px;
+    width: 190px;
+}
+#addTag{
+    height: 30px;
+    width: 150px;
+}
+
+#add{
+    height: 34px;
+}
 div, button {
+    color: white;
+    border: none;
+}
+
+.tag, .tag3, button {
     background-color: black;
+    margin: 5px;
+}
+
+.tag {
+    padding: 0 0 0 5px;
+}
+.tag3{
+    padding: 7px;
+}
+.tag2{
+    padding: 3px;
+    width: 188px;
+}
+li:hover {
+    background-color: gray;
+}
+
+li{
+   border: 1px solid #ebebeb;
+    color: black;
+}
+.firstEl:hover {
+    background-color: gray;
+}
+
+#wrap, #tagZone {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
 }

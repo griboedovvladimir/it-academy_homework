@@ -7,10 +7,11 @@
     });
     let tagSet = new Set();
     let tagArray = [];
+    let parent = document.getElementById('align');
 
     function getTags() {
         if (document.getElementById('addTag').value) {
-            let tagValue = document.getElementById('addTag').value.toLowerCase();//строки со строчными и прописными буквами будут различаться, переводим в единый регистр
+            let tagValue = document.getElementById('addTag').value.toLowerCase();
             tagSet.add(tagValue);
 
             tagArray = ([...tagSet]).sort();
@@ -18,20 +19,20 @@
 
             if (document.getElementById('wrap')) {
                 let wrap = document.getElementById('wrap');
-                document.body.removeChild(wrap)
+                parent.removeChild(wrap)
             }
             let wrap = document.createElement('div');
             wrap.id = 'wrap';
-            wrap = document.body.appendChild(wrap);
+            parent.insertBefore(wrap, document.getElementById('takeTag'));
 
             tagArray.forEach(function (i, item, tagArray) {
                 let tag = document.createElement('div');
                 tag.className = 'tag';
-                //делаем теги с заглавной буквы
                 tag.textContent = i[0].toUpperCase() + i.slice(1);
                 wrap.appendChild(tag);
                 let clearButton = document.createElement('button');
                 clearButton.textContent = 'X';
+                clearButton.className = 'X';
                 tag.appendChild(clearButton);
                 clearButton.addEventListener('click', function () {
                     deleteTags()
@@ -52,52 +53,61 @@
 
     function takeTags() {
         let takeTagValue = document.getElementById('takeTag').value;
-        let tagArray2=[];
+        let tagArray2 = [];
         tagArray = ([...tagSet]);
         let list = new Set();
         for (let i = 0; i < tagArray.length; i++) {
-            if (takeTagValue.toLowerCase() === tagArray[i].substr(0, takeTagValue.length).toLowerCase()&&takeTagValue.length>1) {
+            if (takeTagValue.toLowerCase() === tagArray[i].substr(0, takeTagValue.length).toLowerCase() && takeTagValue.length > 0) {
                 list.add(tagArray[i]);
             }
-            //tagArray2 = [...list];
-                if (document.getElementById('wrap2')) {
-                    let wrap2 = document.getElementById('wrap2');
-                    document.body.removeChild(wrap2);
-                }
+            if (document.getElementById('wrap2')) {
+                let wrap2 = document.getElementById('wrap2');
+                parent.removeChild(wrap2);
+            }
 
-                let tagFromTagZone=document.getElementsByClassName('tag3');
-                for(let i=0;i<tagFromTagZone.length;i++){
-                    list.delete(tagFromTagZone[i].innerHTML.toLowerCase());
-                }
+            let tagFromTagZone = document.getElementsByClassName('tag3');
+            for (let i = 0; i < tagFromTagZone.length; i++) {
+                list.delete(tagFromTagZone[i].innerHTML.toLowerCase());
+            }
 
-                tagArray2 = [...list];
-                let wrap2 = document.createElement('div');
-                wrap2.id = 'wrap2';
-                wrap2 = document.body.appendChild(wrap2);
+            tagArray2 = [...list];
+            let wrap2 = document.createElement('ul');
+            wrap2.id = 'wrap2';
+            parent.insertBefore(wrap2, document.getElementById('tagZone'));
 
-                tagArray2.forEach(function (i, item, tagArrayOut){
-                    let tag2 = document.createElement('div');
-                    tag2.className = 'tag2';
-                    tag2.textContent = i[0].toUpperCase() + i.slice(1);
+            tagArray2.forEach(function (i, item, tagArrayOut) {
+                let tag2 = document.createElement('li');
+                tag2.className = 'tag2';
+                tag2.id = 'tagId' + item;
+                tag2.textContent = i[0].toUpperCase() + i.slice(1);
 
+                wrap2.appendChild(tag2).addEventListener('click', function () {
+                    addToList()
+                });
 
-                    wrap2.appendChild(tag2).addEventListener('click',function(){addToList()});
-
-                    function addToList(){
-
-                        let tag3 = document.createElement('div');
-                        tag3.className = 'tag3';
-                        tag3.textContent = i[0].toUpperCase() + i.slice(1);
-                        document.getElementById('tagZone').appendChild(tag3);
-                        //tagArray2[tagArray2.indexOf(i)]=null;
-                        document.getElementById('takeTag').value='';
+                if (document.getElementsByClassName('tag2')[0]) {
+                    let tagFromList = document.getElementById('tagId0');
+                    tagFromList.classList.add('firstEl');
+                    document.onkeyup = function (e) {
+                        e = e || window.event;
+                        if (e.keyCode === 13 && document.getElementById('takeTag').value) {
+                            addToList();
+                        }
                     }
+                }
 
-                })
+                function addToList() {
+                    let tag3 = document.createElement('div');
+                    tag3.className = 'tag3';
+                    tag3.textContent = i[0].toUpperCase() + i.slice(1);
+                    document.getElementById('tagZone').appendChild(tag3);
+                    document.getElementById('takeTag').value = '';
+                }
 
+            })
         }
         setTimeout(takeTags, 1000);
     }
-}());
 
+}());
 
