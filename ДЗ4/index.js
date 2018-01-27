@@ -9,7 +9,6 @@
         let diamond = ['1F0C6', '1F0C7', '1F0C8', '1F0C9', '1F0CA', '1F0CB', '1F0CD', '1F0CE', '1F0C1', 'diamond'];
         let club = ['1F0D6', '1F0D7', '1F0D8', '1F0D9', '1F0DA', '1F0DB', '1F0DD', '1F0DE', '1F0D1', 'club'];
 
-        function arrOfCards(spade, heart, diamond, club) {
             let arrOut = [];
             getObj(spade);
             getObj(heart);
@@ -145,12 +144,7 @@
 
         document.onclick = () => iterator.next();
 
-    });
 
-    promise.then(res => {
-    }, rej => {
-        alert('Что-то пошло не так. Обратитесь к разработчику )))))'); 
-    });
 
 
 }());
