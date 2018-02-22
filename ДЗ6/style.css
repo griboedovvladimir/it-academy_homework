@@ -1,0 +1,73 @@
+*{
+    font-family: sans-serif;
+}
+table{
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+th{
+    border: 2px solid black;
+}
+th:hover{
+    background-color:lightgray;
+}
+td{
+    border: 1px solid black;
+}
+th,td{
+    padding: 5px;
+}
+.rows:hover{
+    background-color: lightblue;
+}
+#addAfter,#addBefore,#removeRow{
+    display: block;
+    padding: 3px 0 3px 7px;
+}
+#dialog,#inputform{
+     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+#dialog span{
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+}
+#inputform{
+    padding: 7px;
+}
+#addAfter:hover,#removeRow:hover,#addBefore:hover{
+    background-color:lightgray;
+}
+.active{
+    background-color: lightblue;
+}
+label{
+    display: block;
+}
+button{
+    display: block;
+    width:100%;
+    height: 35px;
+    background: linear-gradient(to bottom, #26ce10 1%,#126b08 51%,#27a00c 100%);
+    color: white;
+    margin-top: 7px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    font-size: 14pt;
+}
+.stalk{
+    position: relative;
+    float: right;
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+}
