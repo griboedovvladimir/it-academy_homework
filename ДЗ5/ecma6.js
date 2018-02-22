@@ -17,7 +17,7 @@
 
         race(dist) {
             let time, pipStop, h, m, s, ms;
-            pipStop = (dist / (parseFloat(this.tankCpacity) / parseFloat(this.fuelRate))).toFixed(0) * 0.15;
+            pipStop = (dist / (parseFloat(this.tankCpacity) / parseFloat(this.fuelRate))).toFixed(0) * 0.15;/// у кого маленький бак придется тратить время на заправки
             time = dist / (parseFloat(this.maxSpeed) * 0.6) + pipStop;
 
             h = time;
